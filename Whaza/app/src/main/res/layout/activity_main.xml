@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to Whaza!"
+        android:transitionName="name_tn"
         android:textSize="38sp"
         android:layout_marginTop="40dp">
     </TextView>
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign in to continue"
+        android:transitionName="desc_tn"
         android:textSize="20sp">
     </TextView>
 
@@ -70,7 +72,7 @@
         android:id="@+id/login_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:transitionName="button_tn"
+        android:transitionName="signin_tn"
         android:text="Login"
         android:onClick="doLogin"
         android:layout_marginTop="15dp"

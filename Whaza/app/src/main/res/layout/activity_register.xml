@@ -8,17 +8,10 @@
     android:padding="20dp"
     tools:context=".RegisterActivity">
 
-    <ImageView
-        android:id="@+id/register_logo_iv"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:transitionName="logo_tn" />
-
     <TextView
         android:id="@+id/register_welcome_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:transitionName="name_tn"
         android:text="Welcome"
         android:textSize="35sp" />
 
@@ -26,7 +19,6 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:transitionName="desc_tn"
         android:text="SignUp to start your new Journey"
         android:textSize="18sp"/>
 
@@ -54,7 +46,6 @@
             android:id="@+id/register_email_til"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:transitionName="email_tn"
             android:hint="Email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -69,7 +60,6 @@
             android:id="@+id/register_password_til"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:transitionName="password_tn"
             android:hint="Password"
             app:passwordToggleEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -86,13 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Group"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
     </LinearLayout>
 
@@ -101,7 +85,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:transitionName="button_tn"
         android:text="Register"
         android:onClick="doRegister"
         />
@@ -110,7 +93,6 @@
         android:id="@+id/register_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:transitionName="signin_signup_tn"
         android:text="Already have an account? LOGIN"/>
 
 </LinearLayout>

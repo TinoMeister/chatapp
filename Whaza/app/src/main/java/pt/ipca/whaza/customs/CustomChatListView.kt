@@ -37,11 +37,13 @@ class CustomChatListView(context: Context, resource: Int, chats: MutableList<Cha
         val value = mValues[position]
 
         vh.name?.text = value.name
+        vh.time?.text = value.date.toString()
 
         return view
     }
 
     private class MyViewHolder(view: View?) {
         val name = view?.findViewById<TextView>(R.id.custom_chat_title_iv)
+        val time = view?.findViewById<TextView>(R.id.custom_chat_time_iv)
     }
 }

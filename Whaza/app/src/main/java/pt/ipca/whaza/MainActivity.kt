@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     val password: TextInputLayout by lazy {
         findViewById(R.id.login_password_til)
     }
-    val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,23 +39,20 @@ class MainActivity : AppCompatActivity() {
 
         val btnSignUp = findViewById<Button>(R.id.login_register_btn)
         btnSignUp.setOnClickListener {
-            val intent = Intent(this@MainActivity, RegisterActivity::class.java)
-
-            val options = ActivityOptions.makeSceneTransitionAnimation(this@MainActivity,
-                Pair.create(name, "name_tn"),
-                Pair.create(desc, "desc_tn"),
-                Pair.create(email, "email_tn"),
-                Pair.create(password, "password_tn"),
-                Pair.create(btn, "signin_tn"),
-                Pair.create(btnSignUp, "signin_signup_tn"))
-
-            startActivity(intent, options.toBundle())
+            //val intent = Intent(this@MainActivity, RegisterActivity::class.java)
+            //startActivity(intent)
         }
     }
 
     fun doLogin(v: View) {
         val email = email.editText!!.text.toString()
         val password = password.editText!!.text.toString()
+
+        val intent = Intent(this@MainActivity, ChatActivity::class.java)
+        startActivity(intent)
+
+        /*
+
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -74,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+         */
     }
 
 

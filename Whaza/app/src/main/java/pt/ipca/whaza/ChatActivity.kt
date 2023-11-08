@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import pt.ipca.whaza.models.Chat
 
 class ChatActivity : AppCompatActivity() {
+    lateinit var lists: MutableList<Chat>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
@@ -16,8 +19,17 @@ class ChatActivity : AppCompatActivity() {
         db.collection("chats")
             .get()
             .addOnSuccessListener { result ->
-                Toast.makeText(this, result.toString(), Toast.LENGTH_SHORT).show()
                 for (document in result) {
+
+                    lists.add(Chat(document.id,
+                        document.data["usersids"],
+                        document.data["date"],
+                        document.data["name"].toString()))
+
+                    //val test = Chat(document.data)
+
+
+                    Toast.makeText(this, document.data["name"].toString(), Toast.LENGTH_SHORT).show()
 
                     //Log.d(TAG, "${document.id} => ${document.data}")
                 }

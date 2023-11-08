@@ -2,13 +2,13 @@ package pt.ipca.whaza.models
 
 import com.google.firebase.Timestamp
 
-class Message(id: Int, chatid: Int, userid: Int, date: Timestamp, body: String, messagetypeid: Int) {
-    val id: Int
-    val chatid: Int
-    val userid: Int
+class Message(id: String, chatid: String, userid: String, date: Timestamp, body: String, messagetypeid: String) {
+    val id: String
+    val chatid: String
+    val userid: String
     val date: Timestamp
     val body: String
-    val messagetypeid: Int
+    val messagetypeid: String
 
     init {
         this.id = id

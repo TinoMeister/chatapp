@@ -45,13 +45,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
-<<<<<<< HEAD
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore")
-=======
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-common-ktx:20.4.2")
->>>>>>> cfb8c30d857805193b3828be405ba88294f97558
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

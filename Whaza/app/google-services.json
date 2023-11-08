@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1011104670425",
+    "project_id": "whaza-eaf12",
+    "storage_bucket": "whaza-eaf12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011104670425:android:074cc5db268136658ad4c8",
+        "android_client_info": {
+          "package_name": "pt.ipca.whaza"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBJxzLek4mDzN8ORzd02TY8pqD8WCjd7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

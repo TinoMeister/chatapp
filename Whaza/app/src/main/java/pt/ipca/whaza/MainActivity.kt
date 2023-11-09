@@ -17,6 +17,7 @@ import pt.ipca.whaza.models.Chat
 import pt.ipca.whaza.models.User
 import java.text.DateFormat
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 

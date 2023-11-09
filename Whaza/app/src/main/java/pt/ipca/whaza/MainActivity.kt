@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import pt.ipca.whaza.models.User
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -23,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     val password: TextInputLayout by lazy {
         findViewById(R.id.login_password_til)
     }
-    val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +75,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
-
 
 }

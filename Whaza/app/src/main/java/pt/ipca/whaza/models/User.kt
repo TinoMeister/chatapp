@@ -1,6 +1,11 @@
 package pt.ipca.whaza.models
 
+import android.os.Bundle
+import com.google.firebase.ktx.Firebase
+import pt.ipca.whaza.R
+
 class User(id: String, name: String, email: String, groupid: Int) {
+
     val id: String
     val name: String
     val email: String
@@ -14,4 +19,8 @@ class User(id: String, name: String, email: String, groupid: Int) {
         //this.password = password
         this.groupid = groupid
     }
+
+
+
+
 }

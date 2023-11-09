@@ -30,8 +30,8 @@ class MessageActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val myMessage = document.toObject(Message::class.java)
-                    //if (myMessage.chatid == chatId)
-                    lists.add(myMessage)
+                    if (myMessage.chatid == chatId)
+                        lists.add(myMessage)
                 }
 
                 val adapter = CustomMessageListView(baseContext, R.layout.custommessagelistview ,lists)

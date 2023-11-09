@@ -19,7 +19,6 @@ import java.text.DateFormat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
 
     val email: TextInputLayout by lazy {
         findViewById(R.id.login_email_til)
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         auth = Firebase.auth
-        db = Firebase.firestore
 
         val btn = findViewById<Button>(R.id.login_login_btn)
         btn.setOnClickListener { doLogin(btn) }

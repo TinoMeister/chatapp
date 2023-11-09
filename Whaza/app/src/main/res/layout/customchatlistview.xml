@@ -21,15 +21,34 @@
             android:padding="4dp"
             android:src="@drawable/baseline_chat_24"/>
 
-        <TextView
-            android:id="@+id/custom_chat_title_iv"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:gravity="center_vertical"
-            android:padding="4dp"
-            android:text="@string/app_name"
-            android:textSize="30sp"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/custom_chat_title_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:padding="4dp"
+                android:text="@string/app_name"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/custom_chat_time_iv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="end"
+                android:padding="4dp"
+                android:text="@string/app_name"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

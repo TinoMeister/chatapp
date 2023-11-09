@@ -1,18 +1,8 @@
 package pt.ipca.whaza.models
 
-import com.google.firebase.Timestamp
+import java.util.Date
 
-class Chat(id: String, userids: List<String>, date: Timestamp, name: String) {
-    val id: String
-    val userids : List<String>
-    val date: Timestamp
-    val name: String
-
-    init {
-        this.id = id
-        this.userids = userids
-        this.date = date
-        this.name = name
-    }
-
-}
+data class Chat(var id: String? = "",
+                var userids: MutableList<String> = mutableListOf(),
+                var date: Date? = null,
+                var name: String = "")

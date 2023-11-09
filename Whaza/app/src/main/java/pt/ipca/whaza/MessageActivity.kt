@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
+import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -21,15 +23,27 @@ class MessageActivity : AppCompatActivity() {
     val lst: ListView by lazy {
         findViewById<ListView>(R.id.message_lst)
     }
+    val text: TextView by lazy{
+        findViewById<TextView>(R.id.message_tv)
+    }
+    val btn: Button by lazy{
+        findViewById<Button>(R.id.message_btn)
+    }
     val users = mutableListOf<User>()
     lateinit var chatId: String
+    lateinit var userId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message)
 
-        val userId = intent.getStringExtra("userId")
         chatId = intent.getStringExtra("chatId")!!
+        userId = intent.getStringExtra("userId")!!
+
+        btn.setOnClickListener{
+                sendMessage()
+        }
+
 
         db.collection("users")
             .get()
@@ -40,9 +54,12 @@ class MessageActivity : AppCompatActivity() {
                 }
                 getMessages()
             }
+
             .addOnFailureListener { exception ->
                 Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
             }
+
+
     }
 
     fun getMessages() {
@@ -62,9 +79,39 @@ class MessageActivity : AppCompatActivity() {
 
                 val adapter = CustomMessageListView(baseContext, R.layout.custommessagelistview ,messages)
                 lst.adapter = adapter
+
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    fun sendMessage(){
+        val body = text.text.toString()
+        val myMessage = Message(
+            "",
+            chatId,
+            userId,
+            null,
+            null,
+            body,
+            1
+        )
+        db.collection("messages")
+            .add(myMessage)
+            .addOnSuccessListener { _ ->
+                Toast.makeText(
+                    baseContext,
+                    "Register success",
+                    Toast.LENGTH_SHORT,
+                ).show()
+            }
+            .addOnFailureListener { _ ->
+                Toast.makeText(
+                    baseContext,
+                    "Register failed.",
+                    Toast.LENGTH_SHORT,
+                ).show()
             }
     }
 }

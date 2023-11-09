@@ -18,7 +18,9 @@ class MessageActivity : AppCompatActivity() {
 
     val db = Firebase.firestore
     val messages = mutableListOf<Message>()
-    val lst = findViewById<ListView>(R.id.message_lst)
+    val lst: ListView by lazy {
+        findViewById<ListView>(R.id.message_lst)
+    }
     val users = mutableListOf<User>()
     lateinit var chatId: String
 

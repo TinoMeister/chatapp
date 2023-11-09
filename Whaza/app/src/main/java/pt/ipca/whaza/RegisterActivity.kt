@@ -69,7 +69,7 @@ class RegisterActivity : AppCompatActivity() {
 
     fun addUsers(user: User) {
         db.collection("users")
-            .document(user.id)
+            .document(user.id!!)
             .set(user)
             .addOnSuccessListener { _ ->
                 Toast.makeText(

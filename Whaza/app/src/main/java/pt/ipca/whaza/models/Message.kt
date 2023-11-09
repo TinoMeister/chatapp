@@ -5,6 +5,7 @@ import java.util.Date
 data class Message(var id: String? = "",
                    var chatid: String? = "",
                    var userid: String? = "",
+                   var user: User? = null,
                    var date: Date? = null,
                    var body: String? = "",
                    var messagetypeid: Int? = 0)

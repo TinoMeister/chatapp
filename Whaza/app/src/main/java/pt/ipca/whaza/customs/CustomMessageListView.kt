@@ -36,6 +36,7 @@ class CustomMessageListView(context: Context, resource: Int, messages: MutableLi
         val vh: MyViewHolder = view.tag as MyViewHolder
         val value = mValues[position]
 
+        vh.name?.text = value.user!!.name 
         vh.body?.text = value.body
         vh.time?.text = value.date.toString()
 

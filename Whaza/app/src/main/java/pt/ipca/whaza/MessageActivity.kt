@@ -12,29 +12,53 @@ import pt.ipca.whaza.customs.CustomChatListView
 import pt.ipca.whaza.customs.CustomMessageListView
 import pt.ipca.whaza.models.Chat
 import pt.ipca.whaza.models.Message
+import pt.ipca.whaza.models.User
 
 class MessageActivity : AppCompatActivity() {
+
+    val db = Firebase.firestore
+    val messages = mutableListOf<Message>()
+    val lst = findViewById<ListView>(R.id.message_lst)
+    val users = mutableListOf<User>()
+    lateinit var chatId: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message)
 
         val userId = intent.getStringExtra("userId")
-        val chatId = intent.getStringExtra("chatId")
-        val db = Firebase.firestore
+        chatId = intent.getStringExtra("chatId")!!
 
-        val lists = mutableListOf<Message>()
-        val lst = findViewById<ListView>(R.id.message_lst)
+        db.collection("users")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val myUser = document.toObject(User::class.java)
+                    users.add(myUser)
+                }
+                getMessages()
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
+            }
+    }
 
+    fun getMessages() {
         db.collection("messages")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val myMessage = document.toObject(Message::class.java)
-                    //if (myMessage.chatid == chatId)
-                    lists.add(myMessage)
+                    for (user in users) {
+                        if(user.id == myMessage.userid)
+                            myMessage.user = user
+                    }
+
+                    if (myMessage.chatid == chatId)
+                        messages.add(myMessage)
                 }
 
-                val adapter = CustomMessageListView(baseContext, R.layout.custommessagelistview ,lists)
+                val adapter = CustomMessageListView(baseContext, R.layout.custommessagelistview ,messages)
                 lst.adapter = adapter
             }
             .addOnFailureListener { exception ->

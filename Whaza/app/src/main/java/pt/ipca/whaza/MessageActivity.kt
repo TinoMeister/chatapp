@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +16,8 @@ import pt.ipca.whaza.customs.CustomMessageListView
 import pt.ipca.whaza.models.Chat
 import pt.ipca.whaza.models.Message
 import pt.ipca.whaza.models.User
+import java.time.LocalDate
+import java.util.Date
 
 class MessageActivity : AppCompatActivity() {
 
@@ -26,8 +29,8 @@ class MessageActivity : AppCompatActivity() {
     val text: TextView by lazy{
         findViewById<TextView>(R.id.message_tv)
     }
-    val btn: Button by lazy{
-        findViewById<Button>(R.id.message_btn)
+    val btn: ImageButton by lazy{
+        findViewById<ImageButton>(R.id.message_btn)
     }
     val users = mutableListOf<User>()
     lateinit var chatId: String
@@ -41,9 +44,8 @@ class MessageActivity : AppCompatActivity() {
         userId = intent.getStringExtra("userId")!!
 
         btn.setOnClickListener{
-                sendMessage()
+            sendMessage()
         }
-
 
         db.collection("users")
             .get()
@@ -88,17 +90,18 @@ class MessageActivity : AppCompatActivity() {
 
     fun sendMessage(){
         val body = text.text.toString()
+        val id = db.collection("messages").document().id
         val myMessage = Message(
-            "",
-            chatId,
-            userId,
-            null,
-            null,
-            body,
-            1
+            id = id,
+            chatid = chatId,
+            userid = userId,
+            date = Date(),
+            body = body,
+            messagetypeid = 1
         )
         db.collection("messages")
-            .add(myMessage)
+            .document(id)
+            .set(myMessage)
             .addOnSuccessListener { _ ->
                 Toast.makeText(
                     baseContext,

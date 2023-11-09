@@ -28,7 +28,8 @@ class ChatActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val myChat = document.toObject(Chat::class.java)
-                    if (myChat.userids.contains(userId)) lists.add(myChat)
+                    if (myChat.userids.contains(userId))
+                        lists.add(myChat)
                 }
 
                 val adapter = CustomChatListView(baseContext, R.layout.customchatlistview ,lists)
@@ -36,6 +37,7 @@ class ChatActivity : AppCompatActivity() {
 
                 lst.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
                     val chat = (adapterView.adapter as CustomChatListView).getItem(position)
+
                     val intent = Intent(this@ChatActivity, MessageActivity::class.java)
                     intent.putExtra("chatId", chat!!.id)
                     intent.putExtra("userId", userId)
